@@ -1,9 +1,8 @@
 package com.peaceletter.orphan;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.peaceletter.post.Post;
+
+import javax.persistence.*;
 
 @Entity
 public class Orphan {
@@ -20,4 +19,8 @@ public class Orphan {
     public String sex;
 
     public String look;
+
+    @ManyToOne
+    @JoinColumn(name = "post_id", referencedColumnName = "postId")
+    public Post post;
 }
