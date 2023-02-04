@@ -1,9 +1,8 @@
 package com.peaceletter.image;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.peaceletter.post.Post;
+
+import javax.persistence.*;
 
 @Entity
 public class Image {
@@ -12,4 +11,8 @@ public class Image {
     public Long imageId;
 
     public String url;
+
+    @ManyToOne
+    @JoinColumn(name = "post_id", referencedColumnName = "postId")
+    public Post post;
 }
