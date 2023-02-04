@@ -1,0 +1,23 @@
+package com.peaceletter.orphan;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Orphan {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long orphanId;
+
+    public String name;
+
+    public Integer age;
+
+    public String missedLocation;
+
+    public String sex;
+
+    public String look;
+}
