@@ -6,15 +6,22 @@ import com.findby.common.swagger.post.PostCreate;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@Tag(name = "posts", description = "게시물 API")
+import java.util.List;
+
+@Tag(name = "posts", description = "피스레터 API")
 @RestController
-@RequestMapping("/api/v1/post")
+@RequestMapping("api/v1/post")
 public class PostController {
+
+    @GetMapping("{postId}")
+    public ResponseEntity<CommonResponse<List<PostResponse>>> get(
+            @PathVariable("postId") Long postId
+    ) {
+        CommonResponse<List<PostResponse>> response = new CommonResponse<>(HttpStatus.OK, "피스레터 조회를 성공하였습니다.", List.of(PostResponse.API_TEST(), PostResponse.API_TEST(), PostResponse.API_TEST()));
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
 
     @PostCreate
     @PostMapping("")
