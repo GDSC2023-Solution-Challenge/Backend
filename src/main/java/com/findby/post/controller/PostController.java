@@ -3,6 +3,7 @@ package com.findby.post.controller;
 import com.findby.common.CommonResponse;
 import com.findby.common.swagger.post.CreatePost;
 
+import com.findby.common.swagger.post.GetPost;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequestMapping("api/v1/post")
 public class PostController {
 
+    @GetPost
     @GetMapping("{postId}")
     public ResponseEntity<CommonResponse<List<PostResponse>>> get(
             @PathVariable("postId") Long postId
