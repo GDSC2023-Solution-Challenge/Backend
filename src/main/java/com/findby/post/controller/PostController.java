@@ -1,7 +1,7 @@
 package com.findby.post.controller;
 
 import com.findby.common.CommonResponse;
-import com.findby.common.swagger.post.PostCreate;
+import com.findby.common.swagger.post.CreatePost;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,7 @@ public class PostController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @PostCreate
+    @CreatePost
     @PostMapping("")
     public ResponseEntity<CommonResponse<PostResponse>> create(
             @RequestBody PostRequest postRequest
