@@ -3,6 +3,7 @@ package com.findby.post.controller;
 import com.findby.common.CommonResponse;
 import com.findby.common.swagger.post.CreatePost;
 
+import com.findby.common.swagger.post.DeletePost;
 import com.findby.common.swagger.post.GetPost;
 import com.findby.common.swagger.post.UpdatePost;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -42,6 +43,15 @@ public class PostController {
             @RequestBody PostRequest postUpdate
     ) {
         CommonResponse<PostResponse> response = new CommonResponse<>(HttpStatus.OK, "피스레터 수정이 완료되었습니다.", PostResponse.API_TEST());
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @DeletePost
+    @DeleteMapping("{postId}")
+    public ResponseEntity<CommonResponse<Object>> delete(
+            @PathVariable("postId") Long postId
+    ) {
+        CommonResponse<Object> response = new CommonResponse<>(HttpStatus.OK, "피스레터 삭제가 완료되었습니다.", null);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }
