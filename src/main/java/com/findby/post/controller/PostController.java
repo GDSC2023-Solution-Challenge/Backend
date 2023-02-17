@@ -1,15 +1,14 @@
 package com.findby.post.controller;
 
 import com.findby.common.CommonResponse;
-import com.findby.common.swagger.post.CreatePost;
+import com.findby.common.swagger.post.*;
 
-import com.findby.common.swagger.post.DeletePost;
-import com.findby.common.swagger.post.GetPost;
-import com.findby.common.swagger.post.UpdatePost;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @Tag(name = "posts", description = "피스레터 API")
 @RestController
@@ -51,5 +50,13 @@ public class PostController {
     ) {
         CommonResponse<Object> response = new CommonResponse<>(HttpStatus.OK, "피스레터 삭제가 완료되었습니다.", null);
         return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @GetAchievements
+    @GetMapping("/achievements")
+    public ResponseEntity<CommonResponse<Object>> getAchievements(){
+        Map<String, Integer> achievements = Map.of("findedPerson", 5);
+        CommonResponse<Object> response = new CommonResponse<>(HttpStatus.OK, "조회를 성공하였습니다.", achievements);
+        return ResponseEntity.status(HttpStatus.OK).body(response); 
     }
 }
