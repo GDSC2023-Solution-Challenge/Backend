@@ -11,8 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Tag(name = "posts", description = "피스레터 API")
 @RestController
 @RequestMapping("api/v1/post")
@@ -20,10 +18,10 @@ public class PostController {
 
     @GetPost
     @GetMapping("{postId}")
-    public ResponseEntity<CommonResponse<List<PostResponse>>> get(
+    public ResponseEntity<CommonResponse<PostResponse>> get(
             @PathVariable("postId") Long postId
     ) {
-        CommonResponse<List<PostResponse>> response = new CommonResponse<>(HttpStatus.OK, "피스레터 조회를 성공하였습니다.", List.of(PostResponse.API_TEST(), PostResponse.API_TEST(), PostResponse.API_TEST()));
+        CommonResponse<PostResponse> response = new CommonResponse<>(HttpStatus.OK, "피스레터 조회를 성공하였습니다.", PostResponse.API_TEST());
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
