@@ -3,9 +3,9 @@ package com.findby.post.controller;
 import com.findby.common.CommonResponse;
 import com.findby.common.swagger.post.*;
 
-import com.findby.post.service.PostRequest;
-import com.findby.post.service.PostResponse;
-import com.findby.post.service.PostUpdate;
+import com.findby.post.service.dtos.PostRequest;
+import com.findby.post.service.dtos.PostResponse;
+import com.findby.post.service.dtos.PostUpdate;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

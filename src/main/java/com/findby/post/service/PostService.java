@@ -1,5 +1,8 @@
 package com.findby.post.service;
 
+import com.findby.post.service.dtos.PostRequest;
+import com.findby.post.service.dtos.PostResponse;
+
 import java.util.List;
 
 public interface PostService {

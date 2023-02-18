@@ -1,4 +1,4 @@
-package com.findby.post.service;
+package com.findby.post.service.dtos;
 
 import lombok.Getter;
 
