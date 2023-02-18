@@ -33,6 +33,20 @@ public class PostController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @EndPost
+    @PatchMapping("{postId}/end")
+    public ResponseEntity<CommonResponse<Object>> end(
+            @PathVariable("postId") Long postId
+    ) {
+        Map<String, Object> result = Map.of(
+                "peaceletterId", 1,
+                "isDone", true
+        );
+        CommonResponse<Object> response = new CommonResponse<>(HttpStatus.OK, "피스레터 종료가 완료되었습니다.", result);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+
     @UpdatePost
     @PutMapping("{postId}")
     public ResponseEntity<CommonResponse<PostResponse>> update(
