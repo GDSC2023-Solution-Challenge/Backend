@@ -5,6 +5,7 @@ import com.findby.common.swagger.post.*;
 
 import com.findby.post.service.PostRequest;
 import com.findby.post.service.PostResponse;
+import com.findby.post.service.PostUpdate;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,7 +54,7 @@ public class PostController {
     @PutMapping("{postId}")
     public ResponseEntity<CommonResponse<PostResponse>> update(
             @PathVariable("postId") Long postId,
-            @RequestBody PostRequest postUpdate
+            @RequestBody PostUpdate postUpdate
     ) {
         CommonResponse<PostResponse> response = new CommonResponse<>(HttpStatus.OK, "피스레터 수정이 완료되었습니다.", PostResponse.API_TEST());
         return ResponseEntity.status(HttpStatus.OK).body(response);
