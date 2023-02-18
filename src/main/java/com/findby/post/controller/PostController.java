@@ -39,7 +39,8 @@ public class PostController {
     @EndPost
     @PatchMapping("{postId}/end")
     public ResponseEntity<CommonResponse<Object>> end(
-            @PathVariable("postId") Long postId
+            @PathVariable("postId") Long postId,
+            @RequestParam("password") String password
     ) {
         Map<String, Object> result = Map.of(
                 "peaceletterId", 1,
@@ -63,7 +64,8 @@ public class PostController {
     @DeletePost
     @DeleteMapping("{postId}")
     public ResponseEntity<CommonResponse<Object>> delete(
-            @PathVariable("postId") Long postId
+            @PathVariable("postId") Long postId,
+            @RequestParam("password") String password
     ) {
         CommonResponse<Object> response = new CommonResponse<>(HttpStatus.OK, "피스레터 삭제가 완료되었습니다.", null);
         return ResponseEntity.status(HttpStatus.OK).body(response);
