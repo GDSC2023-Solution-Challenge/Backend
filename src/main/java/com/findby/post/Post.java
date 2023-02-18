@@ -1,4 +1,4 @@
-package com.peaceletter.post;
+package com.findby.post;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

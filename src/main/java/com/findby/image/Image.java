@@ -1,6 +1,6 @@
-package com.peaceletter.image;
+package com.findby.image;
 
-import com.peaceletter.post.Post;
+import com.findby.post.Post;
 
 import javax.persistence.*;
 

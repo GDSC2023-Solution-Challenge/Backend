@@ -1,6 +1,6 @@
-package com.peaceletter.orphan;
+package com.findby.orphan;
 
-import com.peaceletter.post.Post;
+import com.findby.post.Post;
 
 import javax.persistence.*;
 
