@@ -1,4 +1,4 @@
-package com.findby.post.controller;
+package com.findby.post.service;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -11,6 +11,8 @@ import java.util.List;
 public class PostRequest {
     @Schema(example = "우리 아이를 찾아주세요.")
     private final String title;
+    @Schema(example = "1234")
+    private final String password;
     @Schema(example = "블라블라")
     private final String content;
     @Schema(example = "findby@findby.com")
