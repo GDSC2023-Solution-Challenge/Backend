@@ -1,4 +1,4 @@
-package com.findby.post.controller;
+package com.findby.post.service;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
