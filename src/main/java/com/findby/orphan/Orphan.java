@@ -1,26 +1,37 @@
 package com.findby.orphan;
 
-import com.findby.post.Post;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 
 import javax.persistence.*;
 
 @Entity
+@Builder
+@Getter
+@AllArgsConstructor
 public class Orphan {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long orphanId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long orphanId;
 
-    public String name;
+    private String name;
 
-    public Integer age;
+    private Integer age;
 
-    public String missedLocation;
+    private Double latitude;
 
-    public String sex;
+    private Double longitude;
 
-    public String look;
+    private String gender;
 
-    @ManyToOne
-    @JoinColumn(name = "post_id", referencedColumnName = "postId")
-    public Post post;
+    private String look;
+
+    private String countryCode;
+
+    private String countryName;
+
+    public Orphan() {
+
+    }
 }
