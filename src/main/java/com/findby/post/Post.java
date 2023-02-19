@@ -18,30 +18,30 @@ import java.util.stream.Collectors;
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long postId;
+    private Long postId;
 
-    public String password;
+    private String password;
 
-    public String title;
+    private String title;
 
-    public String content;
+    private String content;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "orphan_id")
     public Orphan orphan;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    public List<Image> images = new ArrayList<>();
+    private List<Image> images = new ArrayList<>();
 
-    public LocalDateTime createAt;
+    private LocalDateTime createAt;
 
-    public LocalDateTime updateAt;
+    private LocalDateTime updateAt;
 
-    public Boolean isDone;
+    private Boolean isDone;
 
-    public String email;
+    private String email;
 
-    public Post(String password, String title, String content, Orphan orphan, List<String> images, LocalDateTime createAt, LocalDateTime updateAt, Boolean isDone, String email) {
+    private Post(String password, String title, String content, Orphan orphan, List<String> images, LocalDateTime createAt, LocalDateTime updateAt, Boolean isDone, String email) {
         this.password = password;
         this.title = title;
         this.content = content;

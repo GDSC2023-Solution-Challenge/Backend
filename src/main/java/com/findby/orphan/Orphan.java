@@ -2,32 +2,34 @@ package com.findby.orphan;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 
 import javax.persistence.*;
 
 @Entity
 @Builder
+@Getter
 @AllArgsConstructor
 public class Orphan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long orphanId;
+    private Long orphanId;
 
-    public String name;
+    private String name;
 
-    public Integer age;
+    private Integer age;
 
-    public Double latitude;
+    private Double latitude;
 
-    public Double longitude;
+    private Double longitude;
 
-    public String gender;
+    private String gender;
 
-    public String look;
+    private String look;
 
-    public String countryCode;
+    private String countryCode;
 
-    public String countryName;
+    private String countryName;
 
     public Orphan() {
 
