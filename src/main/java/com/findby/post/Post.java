@@ -12,6 +12,8 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long postId;
 
+    public String password;
+
     public String title;
 
     public String content;
