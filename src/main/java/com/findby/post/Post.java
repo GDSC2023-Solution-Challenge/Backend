@@ -1,11 +1,17 @@
 package com.findby.post;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.findby.orphan.Orphan;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Getter
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Post {
     @Id
@@ -17,6 +23,10 @@ public class Post {
     public String title;
 
     public String content;
+
+    @OneToOne
+    @JoinColumn(name = "orphan_id")
+    public Orphan orphan;
 
     public LocalDateTime createAt;
 
