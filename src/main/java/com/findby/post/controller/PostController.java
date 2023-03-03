@@ -62,7 +62,8 @@ public class PostController {
             @PathVariable("postId") Long postId,
             @RequestBody PostUpdate postUpdate
     ) {
-        CommonResponse<PostResponse> response = new CommonResponse<>(HttpStatus.OK, "피스레터 수정이 완료되었습니다.", PostResponse.API_TEST());
+        PostResponse postResponse = postService.update(postId, postUpdate);
+        CommonResponse<PostResponse> response = new CommonResponse<>(HttpStatus.OK, "피스레터 수정이 완료되었습니다.", postResponse);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 

@@ -28,7 +28,7 @@ public class Post {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "orphan_id")
-    public Orphan orphan;
+    private Orphan orphan;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Image> images = new ArrayList<>();
@@ -64,5 +64,22 @@ public class Post {
         return new Post(
                 password, title, content, orphan, images, LocalDateTime.now(), LocalDateTime.now(), false, email
         );
+    }
+
+    public void update(
+            String password,
+            String title,
+            String content,
+            String email,
+            Orphan orphan,
+            List<String> images
+    ) {
+        this.password = password;
+        this.title = title;
+        this.content = content;
+        this.email = email;
+        this.orphan = orphan;
+        this.images = images.stream().map((url) -> Image.of(url, this)).collect(Collectors.toList());
+        this.updateAt = LocalDateTime.now();
     }
 }
