@@ -1,5 +1,7 @@
 package com.findby.post.service;
 
+import com.findby.common.exception.BadRequestException;
+import com.findby.common.exception.ForbiddenException;
 import com.findby.image.Image;
 import com.findby.orphan.Orphan;
 import com.findby.orphan.service.OrphanService;
@@ -68,7 +70,7 @@ public class PostServiceImpl implements PostService {
     public PostResponse update(Long postId, PostUpdate postUpdate) {
         Post post = postRepository
                 .findById(postId)
-                .orElseThrow(() -> new RuntimeException("존재하지 않는 피스레터입니다."));
+                .orElseThrow(() -> new BadRequestException("해당 피스레터가 존재하지 않습니다."));
 
         isWriter(post, postUpdate.getPassword());
         PostRequest request = postUpdate.getPostRequest();
@@ -89,7 +91,7 @@ public class PostServiceImpl implements PostService {
     private void isWriter(Post post, String password) {
         boolean equals = post.getPassword().equals(password);
         if (!equals) {
-            throw new RuntimeException("수정 권한이 존재하지 않습니다.");
+            throw new ForbiddenException("해당 피스레터를 수정할 수 있는 권한이 존재하지 않습니다.");
         }
     }
 
