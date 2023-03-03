@@ -10,6 +10,7 @@ import com.findby.post.service.dtos.PostResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,5 +61,44 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<PostResponse> getPosts(String... TBU) {
         return null;
+    }
+
+    @Override
+    public List<PostResponse> getCompletedPosts(){
+        List<PostResponse> postResponseList = new ArrayList<>();
+        boolean isDone = true;
+        List<Post> result =  postRepository.findAllByIsDone(isDone);
+        for(Post post: result){
+            List<Image> imageList = post.getImages();
+            List<String> urlList = new ArrayList<>();
+            for(Image image: imageList){
+                urlList.add(image.getUrl());
+            }
+            Orphan orphan = post.getOrphan();
+            OrphanResponse orphanResponse = OrphanResponse.of(
+                    orphan.getOrphanId(),
+                    orphan.getName(),
+                    orphan.getAge(),
+                    orphan.getLatitude(),
+                    orphan.getLongitude(),
+                    orphan.getGender(),
+                    orphan.getLook(),
+                    orphan.getCountryCode(),
+                    orphan.getCountryName()
+            );
+            PostResponse postResponse = PostResponse.of(
+                    post.getPostId(),
+                    post.getTitle(),
+                    post.getContent(),
+                    post.getEmail(),
+                    urlList,
+                    post.getIsDone(),
+                    post.getCreateAt(),
+                    post.getUpdateAt(),
+                    orphanResponse
+            );
+            postResponseList.add(postResponse);
+        }
+        return postResponseList;
     }
 }
