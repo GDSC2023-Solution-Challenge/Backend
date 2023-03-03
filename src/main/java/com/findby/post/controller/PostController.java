@@ -80,7 +80,7 @@ public class PostController {
     @GetAchievements
     @GetMapping("/achievements")
     public ResponseEntity<CommonResponse<Object>> getAchievements(){
-        List<PostResponse> postResponseList = postService.getCompletedPosts();
+        List<PostResponse> postResponseList = postService.getAchievements();
         CommonResponse<Object> response = new CommonResponse<>(HttpStatus.OK, "조회를 성공하였습니다.", postResponseList);
         return ResponseEntity.status(HttpStatus.OK).body(response); 
     }

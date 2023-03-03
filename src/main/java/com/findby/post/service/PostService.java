@@ -11,5 +11,5 @@ public interface PostService {
     void delete(Long postId, String password);
     void end(Long postId, String password);
     List<PostResponse> getPosts (String... TBU);
-    List<PostResponse> getCompletedPosts();
+    List<PostResponse> getAchievements();
 }

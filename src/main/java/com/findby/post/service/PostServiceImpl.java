@@ -64,7 +64,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostResponse> getCompletedPosts(){
+    public List<PostResponse> getAchievements(){
         List<PostResponse> postResponseList = new ArrayList<>();
         boolean isDone = true;
         List<Post> result =  postRepository.findAllByIsDone(isDone);
