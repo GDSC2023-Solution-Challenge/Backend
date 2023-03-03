@@ -79,9 +79,9 @@ public class PostController {
 
     @GetAchievements
     @GetMapping("/achievements")
-    public ResponseEntity<CommonResponse<Object>> getAchievements(){
+    public ResponseEntity<CommonResponse<List<PostResponse>>> getAchievements(){
         List<PostResponse> postResponseList = postService.getAchievements();
-        CommonResponse<Object> response = new CommonResponse<>(HttpStatus.OK, "조회를 성공하였습니다.", postResponseList);
+        CommonResponse<List<PostResponse>> response = new CommonResponse<>(HttpStatus.OK, "조회를 성공하였습니다.", postResponseList);
         return ResponseEntity.status(HttpStatus.OK).body(response); 
     }
 }
