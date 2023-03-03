@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @Tag(name = "posts", description = "피스레터 API")
@@ -78,9 +79,9 @@ public class PostController {
 
     @GetAchievements
     @GetMapping("/achievements")
-    public ResponseEntity<CommonResponse<Object>> getAchievements(){
-        Map<String, Integer> achievements = Map.of("findedPerson", 5);
-        CommonResponse<Object> response = new CommonResponse<>(HttpStatus.OK, "조회를 성공하였습니다.", achievements);
+    public ResponseEntity<CommonResponse<List<PostResponse>>> getAchievements(){
+        List<PostResponse> postResponseList = postService.getAchievements();
+        CommonResponse<List<PostResponse>> response = new CommonResponse<>(HttpStatus.OK, "조회를 성공하였습니다.", postResponseList);
         return ResponseEntity.status(HttpStatus.OK).body(response); 
     }
 }
