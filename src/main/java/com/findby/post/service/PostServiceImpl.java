@@ -46,8 +46,12 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostRequest getPost(Long postId) {
-        return null;
+    public PostResponse getPost(Long postId) {
+        Post post = postRepository
+                .findById(postId)
+                .orElseThrow(() -> new BadRequestException("해당 피스레터가 존재하지 않습니다."));
+
+        return getPostResponse(post, post.getOrphan());
     }
 
     @Override
