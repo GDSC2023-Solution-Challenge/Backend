@@ -51,8 +51,14 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    @Transactional
     public void delete(Long postId, String password) {
+        Post post = postRepository
+                .findById(postId)
+                .orElseThrow(() -> new BadRequestException("해당 피스레터가 존재하지 않습니다."));
 
+        isWriter(post, password);
+        postRepository.delete(post);
     }
 
     @Override
