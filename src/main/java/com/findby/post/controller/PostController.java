@@ -27,7 +27,8 @@ public class PostController {
     public ResponseEntity<CommonResponse<PostResponse>> get(
             @PathVariable("postId") Long postId
     ) {
-        CommonResponse<PostResponse> response = new CommonResponse<>(HttpStatus.OK, "피스레터 조회를 성공하였습니다.", PostResponse.API_TEST());
+        PostResponse postResponse = postService.getPost(postId);
+        CommonResponse<PostResponse> response = new CommonResponse<>(HttpStatus.OK, "피스레터 조회를 성공하였습니다.", postResponse);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
