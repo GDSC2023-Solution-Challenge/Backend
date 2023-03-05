@@ -73,6 +73,7 @@ public class PostController {
             @PathVariable("postId") Long postId,
             @RequestParam("password") String password
     ) {
+        postService.delete(postId, password);
         CommonResponse<Object> response = new CommonResponse<>(HttpStatus.OK, "피스레터 삭제가 완료되었습니다.", null);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
