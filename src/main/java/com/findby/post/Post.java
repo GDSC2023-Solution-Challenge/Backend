@@ -30,7 +30,7 @@ public class Post {
     @JoinColumn(name = "orphan_id")
     private Orphan orphan;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Image> images = new ArrayList<>();
 
     private LocalDateTime createAt;
