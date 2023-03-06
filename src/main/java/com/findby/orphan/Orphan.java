@@ -34,4 +34,16 @@ public class Orphan {
     public Orphan() {
 
     }
+
+    public Orphan update(String name, Integer age, Double latitude, Double longitude, String gender, String look, String countryCode, String countryName) {
+        this.name = name;
+        this.age = age;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.gender = gender;
+        this.look = look;
+        this.countryCode = countryCode;
+        this.countryName = countryName;
+        return this;
+    }
 }
